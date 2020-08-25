@@ -1,0 +1,33 @@
+---
+# Title: role-mariadb-server-10.5
+#
+# Author: bitfinity-nl
+# File: defaults/main.yml
+#
+# Description:
+#  MariaDB Server, with its continual open source innovation, 
+#  is a modern relational database that business can count on
+#
+# Comment:
+#   Override variable(s) here, in your playbook or your group_vars.
+
+
+# -- MariaDB server settings --
+#
+# Variable(s):
+#   mariadb_repository    : 'deb [arch=amd64,arm64,ppc64el] http://ftp.utexas.edu/mariadb/repo/10.4/ubuntu bionic main'  # Set repository URL.
+#   mariadb_repo_file     : 'maria-db-10.4'                                                                              # Set ropsitory file name.
+#
+mariadb_repository   : 'deb [arch=amd64,arm64,ppc64el] https://mirror.serverion.com/mariadbrepo/10.5/ubuntu focal main'
+mariadb_repo_file    : 'mariadb-10.5'
+
+
+# -- MariaDB server settings --
+#
+# Variable(s):
+#   mariadb_administrative_account  : 'root'      # Set administrative root account.
+#   mariadb_administrative_password : 'password'  # Set administrative root password.
+#  
+mariadb_administrative_account  : 'root' 
+mariadb_administrative_password : '{{ def_mariadb_pass }}'
+
