@@ -1,0 +1,61 @@
+---
+# Title: role-mariadb-server
+#
+# Author: bitfinity-nl
+# File: tasks/mariadb-server.yml
+#
+# Description:
+#  MariaDB Server is the leading open source database.
+
+- name: "Add the MariaDB GPG key to this system"
+  apt_key:
+    url: "{{ mariadb_keys }}"
+    state: present
+
+- name: "Add repository"
+  apt_repository:
+    repo: "{{ mariadb_repository }}"
+    state: present
+    filename: "{{ mariadb_repo_file }}"
+
+- name: "Set mariadb root password before installing"
+  debconf:
+    name: mariadb-server
+    question: "{{ item }}"
+    vtype: password
+    value: "{{ mariadb_administrative_password }}"
+  with_items:
+    - mysql-server/root_password
+    - mysql-server/root_password_again
+
+- name: "Install packages"
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes 
+  vars:
+    packages:
+    - mariadb-server
+    - mariadb-client
+    - mariadb-common
+    - python-mysqldb
+
+- name: "Deletes anonymous MySQL server user for localhost"
+  mysql_user:
+    user: ""
+    state: absent
+    login_user: root
+    login_password: "{{ mariadb_administrative_password }}"
+
+- name: "Secures the MySQL root user"
+  mysql_user:
+    user: root
+    password: "{{ mariadb_administrative_password }}"
+    host: "{{ item }}"
+    login_user: root
+    login_password: "{{mariadb_administrative_password }}"
+  with_items:
+    - 127.0.0.1
+    - localhost
+    - ::1
+    - "{{ ansible_fqdn }}"
