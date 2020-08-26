@@ -20,7 +20,7 @@
 #
 mariadb_keys         : 'https://mariadb.org/mariadb_release_signing_key.asc'
 mariadb_repository   : 'deb [arch=amd64,arm64,ppc64el] https://mirror.serverion.com/mariadbrepo/10.5/ubuntu focal main'
-mariadb_repo_file    : 'mariadb-10.5'
+mariadb_repo_file    : 'mariadb'
 
 
 # -- MariaDB server settings --
