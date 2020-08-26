@@ -16,7 +16,6 @@
   apt_repository:
     repo: "{{ mariadb_repository }}"
     filename: "{{ mariadb_repo_file }}"
-    update_cache: no
     state: present
 
 - name: "Set mariadb root password before installing"
