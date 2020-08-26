@@ -29,11 +29,15 @@
     - mysql-server/root_password
     - mysql-server/root_password_again
 
+- name: "Update all packages to the latest version"
+  apt:
+    update_cache: yes
+    upgrade: dist
+    
 - name: "Install packages"
   apt:
     name: "{{ packages }}"
     state: present
-    update_cache: yes 
   vars:
     packages:
     - mariadb-server
