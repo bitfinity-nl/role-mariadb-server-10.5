@@ -1,0 +1,14 @@
+---
+# Title: role-mariadb-server-10.5
+#
+# Author: bitfinity-nl
+# File: tasks/main.yml
+#
+# Description:
+#  MariaDB Server is the leading open source database.
+
+- name: "Install on Ubuntu 20.04lts AMD64"
+  import_tasks: ubt-2004-amd64.yml
+  when:
+    - ansible_distribution_version == "20.04"
+    - ansible_architecture == "x86_64"
