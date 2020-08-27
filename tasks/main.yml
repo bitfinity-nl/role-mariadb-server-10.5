@@ -42,7 +42,7 @@
     - mariadb-server
     - mariadb-client
     - mariadb-common
-    #- python-mysqldb
+    - python3-mysqldb
 
 - name: "Deletes anonymous MySQL server user for localhost"
   mysql_user:
