@@ -1,5 +1,5 @@
 # role-mariadb-server-10.5
-MariaDB Server, with its continual open source innovation,
+MariaDB Server, with its continual open source innovation,  
 is a modern relational database that business can count on.
 
 
@@ -24,6 +24,5 @@ GPLv3
 Author Information
 ------------------
 
-E: info@bitfinity.nl
-
+E: info@bitfinity.nl  
 I: https://www.bitfinity.nl
