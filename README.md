@@ -16,3 +16,14 @@ Example Playbook
       roles:
         - role-mariadb-server-10.5
 
+License
+-------
+
+GPLv3
+
+Author Information
+------------------
+
+E: info@bitfinity.nl
+
+I: https://www.bitfinity.nl
