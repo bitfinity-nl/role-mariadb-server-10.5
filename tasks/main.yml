@@ -27,6 +27,7 @@
   with_items:
     - mysql-server/root_password
     - mysql-server/root_password_again
+  no_log: True
 
 - name: "Update all packages to the latest version"
   apt:
@@ -50,6 +51,7 @@
     state: absent
     login_user: root
     login_password: "{{ mariadb_administrative_password }}"
+  no_log: True
 
 - name: "Secures the MySQL root user"
   mysql_user:
