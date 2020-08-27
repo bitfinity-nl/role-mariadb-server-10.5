@@ -7,6 +7,11 @@
 # Description:
 #  MariaDB Server is the leading open source database.
 
+- name: "Update all packages to the latest version"
+  apt:
+    update_cache: yes
+    upgrade: dist
+    
 - name: "Add the MariaDB GPG key to this system"
   apt_key:
     url: "{{ mariadb_keys }}"
@@ -16,6 +21,7 @@
   apt_repository:
     repo: "{{ mariadb_repository }}"
     filename: "{{ mariadb_repo_file }}"
+    update_cache: no
     state: present
 
 - name: "Set mariadb root password before installing"
