@@ -65,3 +65,4 @@
     - localhost
     - ::1
     - "{{ ansible_fqdn }}"
+  no_log: True
