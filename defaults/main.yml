@@ -19,7 +19,7 @@
 #   mariadb_repo_file     : 'maria-db-10.4'                                                                              # Set ropsitory file name.
 #
 mariadb_keys         : 'https://mariadb.org/mariadb_release_signing_key.asc'
-mariadb_repository   : 'deb [arch=amd64] https://mirror.serverion.com/mariadbrepo/10.5/ubuntu focal main'
+mariadb_repository   : 'deb [arch=amd64] http://ams2.mirrors.digitalocean.com/mariadb/repo/10.5/ubuntu focal main'
 mariadb_repo_file    : 'mariadb'
 
 
