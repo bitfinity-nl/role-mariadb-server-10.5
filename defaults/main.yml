@@ -34,6 +34,17 @@ mariadb_administrative_password : '{{ def_mariadb_pass }}'
 
 
 # -- MariaDB backup settins --
+#
+# Variable(s):
+#   mariadb_backup_account  : '{{ mariadb_administrative_account }}' 
+#   mariadb_backup_password : '{{ mariadb_administrative_password}}'
+#   mariadb_backup_path     : '/opt/backups/mariadb'
+#   mariadb_backup_schedule : 'daily'
+#   mariadb_backup_rotate   : '7'
+#
 mariadb_backup_account  : '{{ mariadb_administrative_account }}' 
 mariadb_backup_password : '{{ mariadb_administrative_password}}'
+mariadb_backup_path     : '/opt/backups/mariadb'
+mariadb_backup_schedule : 'daily'
+mariadb_backup_rotate   : '7'
 
