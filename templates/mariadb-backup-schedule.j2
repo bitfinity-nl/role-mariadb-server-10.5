@@ -1,0 +1,10 @@
+{{ mariadb_backup_path }}/*.sql {
+    {{ mariadb_backup_schedule }}
+    rotate {{ mariadb_backup_rotate }}
+    compress
+    delaycompress
+    create 640 root backup
+    postrotate
+        /root/mariadb-backup.sh
+    endscript
+}
