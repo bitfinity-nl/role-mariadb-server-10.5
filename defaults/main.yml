@@ -32,3 +32,8 @@ mariadb_repo_file    : 'mariadb'
 mariadb_administrative_account  : 'root' 
 mariadb_administrative_password : '{{ def_mariadb_pass }}'
 
+
+# -- MariaDB backup settins --
+mariadb_backup_account  : '{{ mariadb_administrative_account }}' 
+mariadb_backup_password : '{{ mariadb_administrative_password}}'
+
