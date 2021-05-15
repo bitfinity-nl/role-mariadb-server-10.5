@@ -24,7 +24,7 @@
     dest: "{{ item.dest }}"
     owner: "{{ item.owner }}"
     group: "{{ item.group }}"
-    mode: "{{ item.wheel }}"
+    mode: "{{ item.mode }}"
   with_items:
     - { src: '.my.cnf.j2', dest: '/root/.my.cnf', owner: 'root', group: 'root', mode: '0600' }
     - { src: 'mariadb-backup-logical.sh.j2', dest: '/root/mariadb-backup.sh', owner: 'backup', group: 'backup', mode: '0600' }
