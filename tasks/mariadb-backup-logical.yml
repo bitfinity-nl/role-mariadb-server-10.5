@@ -12,7 +12,7 @@
 
 - name: "Create MariaDB directory structure"
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: "{{ mariadb_backup_path }}"
     state: directory
     owner: root
     group: root
@@ -26,6 +26,6 @@
     group: "{{ item.group }}"
     mode: "{{ item.wheel }}"
   with_items:
-    - { src: '.my.cnf.j2', dest: '~/.my.cnf', owner: 'root', mode: 'root', mode: '0600' }
-    - { src: 'logical-db-backup.sh.j2', dest: '~/logical-db-backup.sh', owner: 'backup', mode: 'backup', mode: '0600' }
-    - { src: 'schedule-logical-db-backup.sh.j2', dest: '/etc/logrotate.d/schedule-logical-db-backup.sh', owner: 'root', mode: 'root', mode: '0644' }
+    - { src: '.my.cnf.j2', dest: '/root/.my.cnf', owner: 'root', mode: 'root', mode: '0600' }
+    - { src: 'mariadb-backup-logical.sh.j2', dest: '/root/mariadb-backup.sh', owner: 'backup', mode: 'backup', mode: '0600' }
+    - { src: 'mariadb-backup-schedule.j2', dest: '/etc/logrotate.d/mariadb-backup-schedule', owner: 'root', mode: 'root', mode: '0644' }
