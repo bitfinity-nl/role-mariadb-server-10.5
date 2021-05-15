@@ -30,5 +30,5 @@
     mode: "{{ item.wheel }}"
   with_items:
     - { src: '.my.cnf.j2', dest: '~/root/.my.cnf', owner: 'root', mode: 'root', mode: '0600' }
-    - { src: 'logical-db-backup.sh.j2', dest: '{{ mariadb-backup-path }}/logical-db-backup.sh', owner: 'backup', mode: 'backup', mode: '0600' }
-    - { src: 'schedule-logical-db-backup.j2', dest: '~/root/.my.cnf', owner: 'root', mode: 'root', mode: '0600' }
+    - { src: 'logical-db-backup.sh.j2', dest: '{{ mariadb-backup-path }}/logical-db-backup.sh', owner: 'backup', mode: 'backup', mode: '0640' }
+    - { src: 'schedule-logical-db-backup.sh.j2', dest: '/etc/logrotate.d/schedule-logical-db-backup.sh', owner: 'root', mode: 'root', mode: '0644' }
