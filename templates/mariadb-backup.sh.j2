@@ -6,18 +6,6 @@
 MYSQL_ARGS="--defaults-extra-file=/root/.my.cnf"
 MYSQL="/usr/bin/mysql $MYSQL_ARGS"
 MYSQLDUMP="/usr/bin/mysqldump $MYSQL_ARGS"
-DEST="{{ mariadb_backup_path }}"
+BACKUP="{{ mariadb_backup_path }}"
 
-# Put databases in array except system databases
-readarray -t DBLIST < <($MYSQL -BNe "show databases" | egrep -v '(mysql|.*_schema|sys)' )
-
-for DB in "${DBLIST[@]}"
-do
-   : 
-   # Print database to screen 
-   echo Back-up in progress for database $DB
-
-   # Backup database
-   $MYSQLDUMP $DB | gzip -9 -c > $DEST/$DB-`date +%Y%m%d-%H%M`.sql.gz
-
-done
+$MYSQL -BNe "show databases" | egrep -v '(mysql|.*_schema|sys)' | xargs -n1 -I {} $MYSQLDUMP {} -r $BACKUP/{}.sql > /dev/null 2>&1 && chmod 640 $BACKUP/*.sql && chgrp backup $BACKUP/*.sql
