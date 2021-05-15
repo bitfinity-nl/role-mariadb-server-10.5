@@ -12,3 +12,10 @@
   when:
     - ansible_distribution_version == "20.04"
     - ansible_architecture == "x86_64"
+    
+- name: "Configure (logical) MariaDB backup"
+  import_tasks: mariadb-backup-logical.yml
+  when:
+    - mariadb_backup_type == 'logical'
+    - ansible_distribution_version == "20.04"
+    - ansible_architecture == "x86_64"    
