@@ -36,15 +36,16 @@ mariadb_administrative_password : '{{ def_mariadb_pass }}'
 # -- MariaDB backup settins --
 #
 # Variable(s):
-#   mariadb_backup_account  : '{{ mariadb_administrative_account }}' 
-#   mariadb_backup_password : '{{ mariadb_administrative_password}}'
-#   mariadb_backup_path     : '/opt/backups/mariadb'
-#   mariadb_backup_schedule : 'daily'
-#   mariadb_backup_rotate   : '7'
+#   mariadb_backup_type     : 'logical'                               # Set backup type (none, default=logical, physical). 
+#   mariadb_backup_path     : '/opt/backups/mariadb'                  # Set backup path.
+#   mariadb_backup_schedule : 'daily'                                 # Set schedule.
+#   mariadb_backup_rotate   : '7'                                     # Set retention.
+#   mariadb_backup_account  : '{{ mariadb_administrative_account }}'  # Set backup account.
+#   mariadb_backup_password : '{{ mariadb_administrative_password}}'  # Set backup account password.
 #
-mariadb_backup_account  : '{{ mariadb_administrative_account }}' 
-mariadb_backup_password : '{{ mariadb_administrative_password}}'
+mariadb_backup_type     : 'logical'
 mariadb_backup_path     : '/opt/backups/mariadb'
 mariadb_backup_schedule : 'daily'
 mariadb_backup_rotate   : '7'
-
+mariadb_backup_account  : '{{ mariadb_administrative_account }}' 
+mariadb_backup_password : '{{ mariadb_administrative_password }}'
