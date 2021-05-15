@@ -10,9 +10,6 @@
 # Sources:
 #   https://www.robpeck.com/2018/06/backing-up-and-rotating-mysql-databases-the-easy-way/
 
-
-/opt/tools/mariadb/scripts
-
 - name: "Create MariaDB directory structure"
   ansible.builtin.file:
     path: "{{ item }}"
