@@ -8,4 +8,33 @@ MYSQL="/usr/bin/mysql $MYSQL_ARGS"
 MYSQLDUMP="/usr/bin/mysqldump $MYSQL_ARGS"
 BACKUP="{{ mariadb_backup_path }}"
 
-$MYSQL -BNe "show databases" | egrep -v '(mysql|.*_schema|sys)' | xargs -n1 -I {} $MYSQLDUMP {} -r $BACKUP/{}.sql > /dev/null 2>&1 && chmod 640 $BACKUP/*.sql && chgrp backup $BACKUP/*.sql
+
+#!/bin/bash
+#
+# Source(s): 
+#   https://www.robpeck.com/2018/06/backing-up-and-rotating-mysql-databases-the-easy-way/
+#   https://tecadmin.net/delete-files-older-x-days/
+
+MYSQL_ARGS="--defaults-extra-file=/root/.my.cnf"
+MYSQL="/usr/bin/mysql $MYSQL_ARGS"
+MYSQLDUMP="/usr/bin/mysqldump $MYSQL_ARGS"
+DEST="{{ mariadb_backup_path }}"
+RETENTION={{ mariadb_backup_rotate }}
+
+
+# Put databases in array except system databases
+readarray -t DBLIST < <($MYSQL -BNe "show databases" | egrep -v '(mysql|.*_schema|sys)' )
+
+for DB in "${DBLIST[@]}"
+do
+   : 
+   # Print database to screen 
+   echo Back-up in progress for database $DB
+
+   # Backup database
+   $MYSQLDUMP $DB | gzip -9 -c > $DEST/$DB-`date +%Y%m%d-%H%M`.sql.gz
+
+done
+
+# Remove backups when retention is overdue.
+find $DEST -name "*.sql.gz" -type f -mtime +$RETENTION -exec rm -f {} \;
