@@ -6,9 +6,6 @@
 #
 # Description:
 #   Playbook for creating MariaDB Backups.yml
-#
-# Sources:
-#   https://www.robpeck.com/2018/06/backing-up-and-rotating-mysql-databases-the-easy-way/
 
 - name: "Create MariaDB directory structure"
   ansible.builtin.file:
@@ -27,7 +24,7 @@
     mode: "{{ item.mode }}"
   with_items:
     - { src: '.my.cnf.j2', dest: '/root/.my.cnf', owner: 'root', group: 'root', mode: '0600' }
-    - { src: 'mariadb-backup-logical.sh.j2', dest: '/root/mariadb-backup.sh', owner: 'backup', group: 'backup', mode: '0600' }
+    - { src: 'mariadb-backup-logical.sh.j2', dest: '/root/mariadb-backup.sh', owner: 'backup', group: 'backup', mode: '0500' }
 
 - name: "Schedule backup script"
   cron:
