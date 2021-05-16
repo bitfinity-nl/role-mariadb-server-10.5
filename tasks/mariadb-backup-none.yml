@@ -17,8 +17,8 @@
     path: "{{ item }}"
     state: absent
   with_item:
-    - /root/.my.cnf
-    - /root/mariadb-backup.sh
+    - '/root/.my.cnf'
+    - '/root/mariadb-backup.sh'
 
 - name: "Remove schedule backup script"
   cron:
