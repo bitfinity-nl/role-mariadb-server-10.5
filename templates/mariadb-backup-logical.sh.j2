@@ -2,17 +2,6 @@
 #
 # Source(s): 
 #   https://www.robpeck.com/2018/06/backing-up-and-rotating-mysql-databases-the-easy-way/
-
-MYSQL_ARGS="--defaults-extra-file=/root/.my.cnf"
-MYSQL="/usr/bin/mysql $MYSQL_ARGS"
-MYSQLDUMP="/usr/bin/mysqldump $MYSQL_ARGS"
-BACKUP="{{ mariadb_backup_path }}"
-
-
-#!/bin/bash
-#
-# Source(s): 
-#   https://www.robpeck.com/2018/06/backing-up-and-rotating-mysql-databases-the-easy-way/
 #   https://tecadmin.net/delete-files-older-x-days/
 
 MYSQL_ARGS="--defaults-extra-file=/root/.my.cnf"
