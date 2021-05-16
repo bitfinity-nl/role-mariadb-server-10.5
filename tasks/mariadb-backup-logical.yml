@@ -12,8 +12,8 @@
     path: "{{ mariadb_backup_path }}"
     state: directory
     owner: root
-    group: root
-    mode: 0600
+    group: backup
+    mode: 0660
     
 - name: "Transfer template(s)"
   ansible.builtin.template:
