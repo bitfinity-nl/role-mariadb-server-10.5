@@ -1,0 +1,26 @@
+---
+# Title: role-mariadb-server-10.5
+#
+# Author: Bitfinity-NL / L. Rutten
+# File: tasks/mariadb-backup-none.yml
+#
+# Description:
+#   Playbook for creating MariaDB Backups.yml
+
+- name: "Remove MariaDB directory structure"
+  ansible.builtin.file:
+    path: "{{ mariadb_backup_path }}"
+    state: absent
+
+- name: "Remove MariaDB backup scripts"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  with_item:
+    - /root/.my.cnf
+    - /root/mariadb-backup.sh
+
+- name: "Remove schedule backup script"
+  cron:
+    name: "Schedule database backup daily at {{ mariadb_backup_minute }} minutes past {{ mariadb_backup_hour }}"
+    state: absent
