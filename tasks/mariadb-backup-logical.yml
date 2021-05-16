@@ -2,7 +2,7 @@
 # Title: role-mariadb-server-10.5
 #
 # Author: Bitfinity-NL / L. Rutten
-# File: tasks/logical-db-backup.yml
+# File: tasks/mariadb-backup-logical.yml
 #
 # Description:
 #   Playbook for creating MariaDB Backups.yml
