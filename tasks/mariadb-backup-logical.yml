@@ -28,4 +28,10 @@
   with_items:
     - { src: '.my.cnf.j2', dest: '/root/.my.cnf', owner: 'root', group: 'root', mode: '0600' }
     - { src: 'mariadb-backup-logical.sh.j2', dest: '/root/mariadb-backup.sh', owner: 'backup', group: 'backup', mode: '0600' }
-    - { src: 'mariadb-backup-schedule.j2', dest: '/etc/logrotate.d/mariadb-backup-schedule', owner: 'root', group: 'root', mode: '0644' }
+
+- name: "Schedule backup script"
+  cron:
+    name: "Schedule database backup daily at 05 minutes past 0:00"
+    minute: "5"
+    hour: "0"
+    job: "cd /root/ ; /root/mariadb-backup.sh >/dev/null 2>&1"
