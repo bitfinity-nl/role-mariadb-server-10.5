@@ -21,7 +21,7 @@
     - ansible_architecture == "x86_64"    
 
 - name: "Remove MariaDB backup"
-  import_tasks: mariadb-backup-logical.yml
+  import_tasks: mariadb-backup-none.yml
   when:
     - mariadb_backup_type == 'none'
     - ansible_distribution_version == "20.04"
