@@ -31,4 +31,4 @@
     name: "Schedule database backup daily at {{ mariadb_backup_minute }} minutes past {{ mariadb_backup_hour }}"
     minute: "{{ mariadb_backup_minute }}"
     hour: "{{ mariadb_backup_hour }}"
-    job: "cd /root/ ; mariadb-backup.sh >/dev/null 2>&1"
+    job: "~/mariadb-backup.sh >/dev/null 2>&1"
