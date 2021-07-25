@@ -48,7 +48,7 @@
 
 - name: "Deletes anonymous MySQL server user for localhost"
   mysql_user:
-    user: ''
+    user: "''"
     state: absent
     login_user: root
     login_password: "{{ mariadb_administrative_password }}"
