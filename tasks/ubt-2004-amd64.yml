@@ -52,7 +52,7 @@
     state: absent
     login_user: root
     login_password: "{{ mariadb_administrative_password }}"
-  no_log: True
+#  no_log: True
 
 - name: "Secures the MySQL root user"
   mysql_user:
